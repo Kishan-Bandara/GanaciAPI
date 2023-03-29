@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj": {}
+    "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj": {}
   },
   "projects": {
-    "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj": {
+    "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
+        "projectUniqueName": "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
         "projectName": "GanaciAPI",
-        "projectPath": "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
+        "projectPath": "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
         "packagesPath": "C:\\Users\\krish\\.nuget\\packages\\",
-        "outputPath": "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\obj\\",
+        "outputPath": "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\krish\\AppData\\Roaming\\NuGet\\NuGet.Config",

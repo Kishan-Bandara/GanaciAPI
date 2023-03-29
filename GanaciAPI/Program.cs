@@ -32,7 +32,6 @@ builder.Services.AddSingleton<IMongoClient>(s =>
         new MongoClient(builder.Configuration.GetValue<string>("UserDetailsDatabaseSettings:ConnectionString")));
 
 builder.Services.AddScoped<ISignUpService, SignUpService>();
-//builder.Services.AddScoped<ISignUpService, SignUpService>();
 
 
 builder.Services.AddControllers();

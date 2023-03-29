@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rXh8R9QpR4utOlzgylm6Cw14XKYTsqZ6xvDsWPlxMK5/o+wM33BGHMPDqqvXoCmRciY822QLdmhxQ8BAjmLKuA==",
+  "dgSpecHash": "TKJSr5nF4SyvlhuNhG5qhg6OTOeFaPPSOCYa4Vz+leXpHOAoTYcCq0xZj3xWSijYFYXqaJ8HGGYJbSp6+TzJqg==",
   "success": true,
-  "projectFilePath": "H:\\Ganacsi Project\\Code\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
+  "projectFilePath": "H:\\Ganacsi Project\\Github\\API\\GanaciAPI\\GanaciAPI\\GanaciAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\krish\\.nuget\\packages\\awssdk.core\\3.7.100.14\\awssdk.core.3.7.100.14.nupkg.sha512",
     "C:\\Users\\krish\\.nuget\\packages\\awssdk.securitytoken\\3.7.100.14\\awssdk.securitytoken.3.7.100.14.nupkg.sha512",
