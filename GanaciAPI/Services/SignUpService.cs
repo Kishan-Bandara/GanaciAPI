@@ -1,0 +1,54 @@
+﻿using GanaciAPI.Models;
+using GanaciAPI.Models.DataBaseSettings;
+using MongoDB.Driver;
+
+namespace GanaciAPI.Services
+{
+    public class SignUpService : ISignUpService
+    {
+
+        private readonly IMongoCollection<userDetails> _signUp;
+        public SignUpService(IUserDetailsDatabaseSettings settings , IMongoClient mongoClient)
+        {
+            var database = mongoClient.GetDatabase(settings.DatabaseName); //store database on variable
+            _signUp = database.GetCollection<userDetails>(settings.UserDetailsCollectionName);//Call the collection
+        }
+
+        public userDetails Create(userDetails userDetails) //Insert one students
+        {
+            _signUp.InsertOne(userDetails);
+            return userDetails;
+        }
+
+        public List<userDetails> Get() //Get user Details
+        {
+            return _signUp.Find(userDetails => true).ToList();
+        }
+
+        public userDetails Get(string id) // Get Singel User by ID
+        {
+            return _signUp.Find(userDetails => userDetails.Id == id).FirstOrDefault();
+        }
+
+        //public userDetails GetName(string firstName) // Get Singel User by User First Name
+        //{
+        //    return _signUp.Find(userDetails => userDetails.FirstName == firstName).FirstOrDefault();
+        //}
+
+        public void Remove(string id) // remove BY ID
+        {
+            _signUp.DeleteOne(userDetails => userDetails.Id == id);
+        }
+
+        public void Update(string id, userDetails user) // Update by ID
+        {
+            _signUp.ReplaceOne(user => user.Id == id, user);
+        }
+
+        public userDetails InsertUserDetailRecord(userDetails userD) //Insert one students
+        {
+            _signUp.InsertOne(userD);
+            return userD;
+        }
+    }
+}
