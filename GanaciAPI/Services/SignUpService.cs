@@ -1,6 +1,7 @@
 ﻿using GanaciAPI.Models;
 using GanaciAPI.Models.DataBaseSettings;
 using MongoDB.Driver;
+using MongoDB.Bson;
 
 namespace GanaciAPI.Services
 {
@@ -30,10 +31,10 @@ namespace GanaciAPI.Services
             return _signUp.Find(userDetails => userDetails.Id == id).FirstOrDefault();
         }
 
-        //public userDetails GetName(string firstName) // Get Singel User by User First Name
-        //{
-        //    return _signUp.Find(userDetails => userDetails.FirstName == firstName).FirstOrDefault();
-        //}
+        public userDetails GetName(string firstName) // Get Singel User by User First Name
+        {
+            return _signUp.Find(userDetails => userDetails.FirstName == firstName).FirstOrDefault();
+        }
 
         public void Remove(string id) // remove BY ID
         {
@@ -50,5 +51,17 @@ namespace GanaciAPI.Services
             _signUp.InsertOne(userD);
             return userD;
         }
+
+        public userDetails GetByNameUserDetailRecordMongo(string firstName) //Search one user by Name
+        {
+            return _signUp.Find(userDetails => userDetails.FirstName == firstName).FirstOrDefault();
+        }
+
+        public userDetails GetByEmailUserDetailRecordMongo(string Email) //Search one user by Email
+        {
+            return _signUp.Find(userDetails => userDetails.Email == Email).FirstOrDefault();
+        }
+
+
     }
 }
