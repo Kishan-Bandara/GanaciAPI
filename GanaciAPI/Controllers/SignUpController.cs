@@ -65,17 +65,6 @@ namespace GanaciAPI.Controllers
             return CreatedAtAction(nameof(Get), new { id = userD.Id }, userD);
         }
 
-        //Insert a User
-        [HttpPost ("InsertUserDetailRecordMongo")]
-        [ActionName("InsertUserDetailRecordMongo")]
-        public dynamic InsertUserDetailRecordMongo([FromBody] userDetails lineValue)
-        {
-            signupService.InsertUserDetailRecord(lineValue);
-
-            return CreatedAtAction(nameof(Get), new { id = lineValue.Id }, lineValue);
-        }
-
-
 
         // PUT api/<StudentsController>/5
         [HttpPut("{id}")]
@@ -111,6 +100,71 @@ namespace GanaciAPI.Controllers
 
 
         //
+
+        //Insert a User
+        [HttpPost("InsertUserDetailRecordMongo")]
+        [ActionName("InsertUserDetailRecordMongo")]
+        public dynamic InsertUserDetailRecordMongo([FromBody] userDetails lineValue)
+        {
+            signupService.InsertUserDetailRecord(lineValue);
+
+            return CreatedAtAction(nameof(Get), new { id = lineValue.Id }, lineValue);
+        }
+
+        //Search User By Name
+        [HttpGet("GetByNameUserDetailRecordMongo")]
+        [ActionName("GetByNameUserDetailRecordMongo")]
+        public dynamic GetByNameUserDetailRecordMongo(string firstName)
+        {
+            var userDetails = signupService.GetByNameUserDetailRecordMongo(firstName);
+
+            if (userDetails == null)
+            {
+                return NotFound($"User first with Id = {firstName} not found");
+            }
+
+            return userDetails;
+        }
+
+        //Search User By Email
+        [HttpGet("GetByEmailUserDetailRecordMongo")]
+        [ActionName("GetByEmailUserDetailRecordMongo")]
+        public dynamic GetByEmailUserDetailRecordMongo(string Email)
+        {
+            var userDetails = signupService.GetByEmailUserDetailRecordMongo(Email);
+
+            //if (userDetails == null)
+            //{
+            //    return NotFound($"User Email with Email = {Email} not found");
+            //}
+
+            return userDetails;
+        }
+
+        //Upload Image
+        //[HttpPost("UploadImage")]
+        //[ActionName("UploadImage")]
+        //public IActionResult UploadImage()
+        //{
+
+        //    signupService.InsertUserDetailRecord(lineValue);
+
+        //    return CreatedAtAction(nameof(Get), new { id = lineValue.Id }, lineValue);
+
+        //    var file = Request.Form.Files[0];
+        //    using (var memoryStream = new MemoryStream())
+        //    {
+        //        file.CopyTo(memoryStream);
+        //        var imageData = memoryStream.ToArray();
+        //        var bsonDocument = new BsonDocument
+        //    {
+        //        { "imageData", imageData }
+        //    };
+        //        _imagesCollection.InsertOne(bsonDocument);
+        //    }
+        //    return Ok();
+        //}
+
 
     }
 }
