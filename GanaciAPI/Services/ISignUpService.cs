@@ -11,9 +11,8 @@ namespace GanaciAPI.Services
         void Remove(string id); // remove by ID
         userDetails InsertUserDetailRecord(userDetails userDetails); //New Method
         userDetails GetByNameUserDetailRecordMongo(string firstName); //Get By UserName
-
         userDetails GetByEmailUserDetailRecordMongo(string Email); //Get By UserName
+        void UploadImage();//Upload Image
 
-        //userDetails UploadImage();
     }
 }

@@ -2,6 +2,10 @@
 using GanaciAPI.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Drawing;
+using System.IO;
+//using System.Windows.Forms;
 
 namespace GanaciAPI.Controllers
 {
@@ -133,37 +137,38 @@ namespace GanaciAPI.Controllers
         {
             var userDetails = signupService.GetByEmailUserDetailRecordMongo(Email);
 
-            //if (userDetails == null)
-            //{
-            //    return NotFound($"User Email with Email = {Email} not found");
-            //}
-
             return userDetails;
         }
 
+
         //Upload Image
-        //[HttpPost("UploadImage")]
-        //[ActionName("UploadImage")]
-        //public IActionResult UploadImage()
-        //{
+        [HttpPost("ImageSaveToFolder")]
+        public async Task<IActionResult> ImageSaveToFolder(IFormFile file)
+        {
+            if (file == null || file.Length == 0)
+                return BadRequest("No file selected.");
 
-        //    signupService.InsertUserDetailRecord(lineValue);
+            // Create a file stream to write the image data to
+            string uniqueId = $"{DateTime.Now:yyyyMMddHHmmssffff}_{new Random().Next(10000, 99999)}";
+            string filePath = @"H:\Ganacsi Project\Github\API\AfterSaveImages\" + uniqueId + ".jpg";
 
-        //    return CreatedAtAction(nameof(Get), new { id = lineValue.Id }, lineValue);
+            // Load the image file
+            Image myImage = Image.FromStream(file.OpenReadStream(), true, true);
 
-        //    var file = Request.Form.Files[0];
-        //    using (var memoryStream = new MemoryStream())
-        //    {
-        //        file.CopyTo(memoryStream);
-        //        var imageData = memoryStream.ToArray();
-        //        var bsonDocument = new BsonDocument
-        //    {
-        //        { "imageData", imageData }
-        //    };
-        //        _imagesCollection.InsertOne(bsonDocument);
-        //    }
-        //    return Ok();
-        //}
+            // Create a file stream to write the image data to
+            FileStream fileStream = new FileStream(filePath, FileMode.Create);
+
+            // Save the image to the file stream as a JPEG
+            myImage.Save(fileStream, System.Drawing.Imaging.ImageFormat.Jpeg);
+
+            // Close the file stream
+            fileStream.Close();
+
+            Console.WriteLine(new { filename = uniqueId });
+
+            return Ok(new { filename = uniqueId });
+
+        }
 
 
     }
