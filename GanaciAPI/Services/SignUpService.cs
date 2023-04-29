@@ -62,6 +62,24 @@ namespace GanaciAPI.Services
             return _signUp.Find(userDetails => userDetails.Email == Email).FirstOrDefault();
         }
 
+        public void UploadImage() //Search one user by Email
+        {
+            //var file = Request.Form.Files[0];
+            //var form = Request.ReadFormAsync().Result;
+            //var file = form.Files[0];
+            //using (var memoryStream = new MemoryStream())
+            //{
+            //    file.CopyTo(memoryStream);
+            //    var imageData = memoryStream.ToArray();
+            //    var bsonDocument = new BsonDocument
+            //{
+            //    { "imageData", imageData }
+            //};
+            //    _signUp.InsertOne(bsonDocument);
+            //}
+            //return Ok();
+        }
+
 
     }
 }
