@@ -33,6 +33,20 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 
 builder.Services.AddScoped<ISignUpService, SignUpService>();
 
+//Define VehicleSale
+//Read database connection string 
+builder.Services.Configure<VehicleSaleDatabaseSettings>(
+                builder.Configuration.GetSection(nameof(VehicleSaleDatabaseSettings)));
+
+builder.Services.AddSingleton<IVehicleSaleDatabaseSettings>(sp =>
+    sp.GetRequiredService<IOptions<VehicleSaleDatabaseSettings>>().Value);
+
+builder.Services.AddSingleton<IMongoClient>(s =>
+        new MongoClient(builder.Configuration.GetValue<string>("VehicleSaleDatabaseSettings:ConnectionString")));
+
+//builder.Services.AddScoped<ISignUpService, SignUpService>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
