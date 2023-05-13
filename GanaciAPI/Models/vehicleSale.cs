@@ -54,5 +54,8 @@ namespace GanaciAPI.Models
 
         [BsonElement("transmission")]
         public string Transmission { get; set; } = String.Empty;
+
+        [BsonElement("imagePath")]
+        public string ImagePath { get; set; } = String.Empty;
     }
 }
